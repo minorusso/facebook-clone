@@ -1,20 +1,28 @@
 <h1>ポスト一覧</h1>
 <p><%= notice %></p>
 <table>
-    <tr>
-        <th>ユーザー名</th>
-        <th>タイトル</th>
-        <th>内容</th>
-    </tr>
     <% @blogs.each do |blog| %>
     <tr>
+        <th>ユーザー名</th>
         <td><%= blog.user.name %></td>
-        <td><%= blog.title %></td>
-        <td><%= blog.content %></td>
-        <td><%= link_to '詳細を確認する', blog_path(blog.id) %></td>
-        <td><%= link_to "編集する", edit_blog_path(blog.id) %></td>
-        <td><%= link_to '削除する', blog_path(blog.id), method: :delete  ,data: { confirm: '本当に削除していいですか？' }%></td>
     </tr>
+    <tr>
+        <th>画像</th>
+        <td>
+        <td><%= image_tag(blog.image.url) %></td>
+        </td>
+    </tr>
+    <tr>
+        <th>タイトル</th>
+        <td><%= blog.title %></td>
+    </tr>
+    <tr>
+        <th>内容</th>
+        <td><%= blog.content %></td>
+    </tr>
+    <td><%= link_to '詳細を確認する', blog_path(blog.id) %></td>
+    <td><%= link_to "編集する", edit_blog_path(blog.id) %></td>
+    <td><%= link_to '削除する', blog_path(blog.id), method: :delete  ,data: { confirm: '本当に削除していいですか？' }%></td>
     <% end %>
 </table>
 <br>
